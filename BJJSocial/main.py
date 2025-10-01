@@ -2,7 +2,7 @@ import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.sessions import SessionMiddleware
-from .routers import auth, users, posts, tournaments, leaderboard
+from .routers import auth, users, posts, tournaments, leaderboard, search
 from .database import engine, Base
 
 # Create tables
@@ -36,6 +36,7 @@ app.include_router(users.router)
 app.include_router(posts.router)
 app.include_router(tournaments.router)
 app.include_router(leaderboard.router)
+app.include_router(search.router)
 
 @app.get("/")
 async def root():

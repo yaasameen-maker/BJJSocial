@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./lib/queryClient";
@@ -20,6 +21,7 @@ import EnhancedProfileCard from "./components/EnhancedProfileCard";
 import CreateProfileForm from "./components/CreateProfileForm";
 import Feed from "./components/Feed";
 import Rankings from "./pages/Rankings";
+import Search from "./pages/Search";
 
 function AppContent() {
   const { user, isLoading, isAuthenticated } = useAuth();
@@ -238,14 +240,7 @@ function AppContent() {
             <Rankings />
           )} />
           
-          <Route path="/search" component={() => (
-            <div className="min-h-screen bg-background py-8">
-              <div className="max-w-4xl mx-auto px-4 text-center">
-                <h1 className="text-3xl font-bold mb-4">Search</h1>
-                <p className="text-muted-foreground">Search features coming soon!</p>
-              </div>
-            </div>
-          )} />
+          <Route path="/search" component={Search} />
           
           {/* Default route - redirect to landing */}
           <Route component={() => (
