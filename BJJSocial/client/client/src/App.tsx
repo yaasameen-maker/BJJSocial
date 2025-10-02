@@ -5,6 +5,17 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [apiMsg, setApiMsg] = useState<string | null>(null)
+
+  async function fetchApi() {
+    try {
+      const res = await fetch('http://127.0.0.1:8000/');
+      const json = await res.json();
+      setApiMsg(JSON.stringify(json));
+    } catch (e) {
+      setApiMsg('Unable to reach backend')
+    }
+  }
 
   return (
     <>
@@ -21,6 +32,10 @@ function App() {
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
+        <button onClick={fetchApi} style={{ marginLeft: 12 }}>
+          Call API
+        </button>
+        {apiMsg && <pre style={{ marginTop: 12 }}>{apiMsg}</pre>}
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
