@@ -25,3 +25,6 @@ steps:
 # This lists the built image name for reference
 images:
 - 'gcr.io/$PROJECT_ID/grapple-backend:$COMMIT_SHA'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
