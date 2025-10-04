@@ -2,10 +2,10 @@ from fastapi import APIRouter, Depends, HTTPException, status, Query
 from sqlalchemy.orm import Session
 from sqlalchemy import and_, func
 from typing import Optional
-from ..database import get_db
-from ..models import User, Leaderboard, Match, Tournament
-from ..schemas import LeaderboardResponse
-from ..auth import sanitize_user
+from database import get_db
+from models import User, Leaderboard, Match, Tournament
+from schemas import LeaderboardResponse
+from auth import sanitize_user
 
 router = APIRouter(prefix="/api", tags=["leaderboard"])
 
