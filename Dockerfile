@@ -16,13 +16,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy only packaging files first for better caching
-COPY BJJSocial/requirements.txt ./BJJSocial/requirements.txt
+COPY BJJSocial/requirements.txt .
 
 # Install Python dependencies
-RUN pip install --no-cache-dir -r BJJSocial/requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the application code
-COPY BJJSocial ./BJJSocial
+# Copy the application code into the container's working directory
+COPY ./BJJSocial .
 
 # Default DB: use a local SQLite file inside the container unless overridden
 ENV DATABASE_URL="sqlite:///./bjj.db"
@@ -31,4 +31,4 @@ ENV DATABASE_URL="sqlite:///./bjj.db"
 EXPOSE 8000
 
 # Run Uvicorn
-CMD ["uvicorn", "BJJSocial.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
