@@ -21,14 +21,14 @@ COPY BJJSocial/requirements.txt .
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the application code into the container's working directory
+# Copy the application code into the container\'s working directory
 COPY ./BJJSocial .
 
 # Default DB: use a local SQLite file inside the container unless overridden
 ENV DATABASE_URL="sqlite:///./bjj.db"
 
-# Expose port
-EXPOSE 8080
+# Expose the port the app will listen on. Render will replace this.
+EXPOSE 10000
 
-# Run the application
-CMD ["python", "main.py"]
+# Run the application using uvicorn. Render will inject the PORT environment variable.
+CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port $PORT"]
