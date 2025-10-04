@@ -1,45 +1,61 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
-*.pyc
-*.pyd
-*.pyo
+*.py[cod]
+*$py.class
 
 # C extensions
 *.so
 
 # Distribution / packaging
 .Python
-env/
-venv/
 build/
 develop-eggs/
 dist/
 eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
 *.egg-info/
-.installed.cfg
-*.manifest
-*.spec
+.installed.txt
+htmlcov/
+.coverage
+.tox/
 
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
 
 # Unit test / coverage reports
-.coverage
-.tox/
+.coverage.*
+.hypothesis/
 .pytest_cache/
-htmlcov/
+
+# Virtual environment
+.venv/
+venv/
+env/
+/site/
 
 # Editors
 .vscode/
 .idea/
 *.swp
 *.bak
-*.swo
-
-# OS
+*~
 .DS_Store
-Thumbs.db
 
-# Jupyter Notebook
-.ipynb_checkpoints
+# OS generated files
+.DS_Store
+.Trashes
+Thumbs.db
+ehthumbs.db
+Icon?
+desktop.ini
+
+# FastAPI specific
+.env
+*.log
