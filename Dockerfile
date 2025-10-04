@@ -16,11 +16,11 @@ COPY BJJSocial/requirements.txt /app/
 RUN pip install --no-cache-dir -r /app/requirements.txt
 
 # Copy the entire application package
-# This preserves the directory structure needed for package imports
 COPY ./BJJSocial /app/BJJSocial
 
 # Expose the port the app will listen on.
 EXPOSE 8080
 
-# Run the application as a module to fix relative import errors
-CMD ["python", "-m", "uvicorn", "BJJSocial.main:app", "--host", "0.0.0.0", "--port", "8080"]
+# DEBUGGING STEP 1: List files to verify container structure.
+# This command will cause deployment to fail, but will show file layout in logs.
+CMD ["ls", "-R", "/app"]
