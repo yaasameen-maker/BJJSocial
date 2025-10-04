@@ -10,19 +10,14 @@ WORKDIR /app
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-# Install system dependencies needed for some Python packages
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
-    && rm -rf /var/lib/apt/lists/*
-
 # Copy only packaging file first for better caching
 COPY BJJSocial/requirements.txt .
 
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the application code into a subdirectory, preserving the package structure
-COPY ./BJJSocial ./BJJSocial
+# Copy the application code into the container
+COPY ./BJJSocial .
 
 # Default DB: use a local SQLite file inside the container unless overridden
 ENV DATABASE_URL="sqlite:///./bjj.db"
@@ -30,6 +25,5 @@ ENV DATABASE_URL="sqlite:///./bjj.db"
 # Expose the port the app will listen on. Render will replace this.
 EXPOSE 10000
 
-# Run the application as a module to fix relative imports
-# Render will inject the PORT environment variable.
-CMD ["sh", "-c", "uvicorn BJJSocial.main:app --host 0.0.0.0 --port $PORT"]
+# Run the application. Render will inject the PORT environment variable.
+CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port $PORT"]

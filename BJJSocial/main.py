@@ -2,8 +2,8 @@ import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.sessions import SessionMiddleware
-from .routers import auth, users, posts, tournaments, leaderboard, search
-from .database import engine, Base
+from routers import auth, users, posts, tournaments, leaderboard, search
+from database import engine, Base
 
 # Create tables
 Base.metadata.create_all(bind=engine)
