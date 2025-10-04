@@ -22,9 +22,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the application code into the container
 COPY ./BJJSocial .
 
-# Default DB: use a local SQLite file inside the container unless overridden
-ENV DATABASE_URL="sqlite:///./bjj.db"
-
 # Expose the port the app will listen on. Cloud Run will inject this.
 EXPOSE 8080
 
