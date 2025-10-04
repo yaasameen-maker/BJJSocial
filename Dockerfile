@@ -6,6 +6,9 @@ FROM python:3.11-slim
 # Set working directory
 WORKDIR /app
 
+# Add the app directory to the PYTHONPATH
+ENV PYTHONPATH "${PYTHONPATH}:/app"
+
 # Avoid Python writing pyc files and buffer stdout/stderr
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
@@ -22,8 +25,8 @@ COPY ./BJJSocial .
 # Default DB: use a local SQLite file inside the container unless overridden
 ENV DATABASE_URL="sqlite:///./bjj.db"
 
-# Expose the port the app will listen on. Render will replace this.
-EXPOSE 10000
+# Expose the port the app will listen on. Cloud Run will inject this.
+EXPOSE 8080
 
-# Run the application. Render will inject the PORT environment variable.
+# Run the application. Cloud Run injects the PORT environment variable.
 CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port $PORT"]
