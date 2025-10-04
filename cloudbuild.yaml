@@ -10,8 +10,7 @@ steps:
   id: 'Push backend image'
 
 # 3. Deploy container image to Cloud Run
-- name: 'gcr.io/google-cloud-sdk/gcloud:slim' # Using a more stable image
-  entrypoint: gcloud
+- name: 'gcr.io/cloud-builders/gcloud' # Using the official gcloud builder
   args:
     - 'run'
     - 'deploy'
