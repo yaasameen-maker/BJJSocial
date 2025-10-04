@@ -8,7 +8,7 @@ from sqlalchemy.dialects.postgresql import UUID as PGUUID
 from datetime import datetime
 import uuid
 
-from .database import Base
+from database import Base
 
 # Helper function for UUID generation
 def generate_uuid():
