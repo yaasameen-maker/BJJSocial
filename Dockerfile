@@ -27,8 +27,8 @@ COPY ./BJJSocial .
 # Default DB: use a local SQLite file inside the container unless overridden
 ENV DATABASE_URL="sqlite:///./bjj.db"
 
-# Expose port - This is now dynamic based on the PORT env var
-# EXPOSE 8000
+# Expose port
+EXPOSE 8080
 
-# Run Uvicorn, using the PORT environment variable provided by Cloud Run
-CMD exec uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000}
+# Run the application
+CMD ["python", "main.py"]
