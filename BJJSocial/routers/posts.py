@@ -1,10 +1,10 @@
 from fastapi import APIRouter, Depends, HTTPException, status, Query
 from sqlalchemy.orm import Session
 from typing import Optional
-from database import get_db
-from models import User, Post, Comment, Like
-from schemas import InsertPost, PostResponse, InsertComment, CommentResponse
-from auth import get_current_user, get_current_user_optional, sanitize_user
+from ..database import get_db
+from ..models import User, Post, Comment, Like
+from ..schemas import InsertPost, PostResponse, InsertComment, CommentResponse
+from ..auth import get_current_user, get_current_user_optional, sanitize_user
 
 router = APIRouter(prefix="/api", tags=["posts"])
 

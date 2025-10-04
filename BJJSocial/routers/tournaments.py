@@ -2,10 +2,10 @@ from fastapi import APIRouter, Depends, HTTPException, status, Query
 from sqlalchemy.orm import Session
 from typing import Optional
 from datetime import datetime
-from database import get_db
-from models import User, Tournament, Match
-from schemas import InsertTournament, TournamentResponse, InsertMatch, FinalizeMatch, MatchResponse
-from auth import get_current_user, sanitize_user
+from ..database import get_db
+from ..models import User, Tournament, Match
+from ..schemas import InsertTournament, TournamentResponse, InsertMatch, FinalizeMatch, MatchResponse
+from ..auth import get_current_user, sanitize_user
 
 router = APIRouter(prefix="/api", tags=["tournaments"])
 

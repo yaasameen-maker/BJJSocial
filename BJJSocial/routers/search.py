@@ -1,8 +1,7 @@
-
 from fastapi import APIRouter, Query, Depends
 from sqlalchemy.orm import Session
-from database import get_db
-from models import User, Post, Tournament
+from ..database import get_db
+from ..models import User, Post, Tournament
 
 router = APIRouter()
 
